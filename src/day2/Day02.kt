@@ -1,43 +1,43 @@
 package day2
 
+import day2.Move.Companion.losingMoves
+import day2.Move.Companion.moves
+import day2.Move.Companion.points
+import day2.Move.Companion.strategies
+import day2.Move.Companion.winningMoves
+import day2.Strategy.DRAW
+import day2.Strategy.LOSE
+import day2.Strategy.WIN
 import readInput
-import java.awt.Point
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val movement = mapInput(input)
-            .fold(Point(0, 0)) { mv, currMv -> Point(mv.x + currMv.first, mv.y + currMv.second) }
-
-        return movement.x * movement.y
+        return input.sumOf {
+            val (oppMove, ownMove) = it.split(" ").map { moveStr -> moves[moveStr]!! }
+            (ownMove.ordinal + 1) + points[ownMove]!![oppMove]!!
+        }
     }
 
     fun part2(input: List<String>): Int {
-        val movement = mapInput(input)
-            .fold(Triple(0, 0, 0)) { acc, currMv ->
-                val accAim = acc.third + currMv.second
-                Triple(acc.first + currMv.first, acc.second + (accAim * currMv.first), accAim)
-            }
+        return input.sumOf {
+            val (oppMoveStr, strategy) = it.split(" ")
 
-        return movement.first * movement.second
+            val oppMove = moves[oppMoveStr]
+            val ownMove = when (strategies[strategy]!!) {
+                LOSE -> losingMoves[oppMove]!!
+                DRAW -> oppMove
+                WIN -> winningMoves[oppMove]!!
+            }!!
+
+            (ownMove.ordinal + 1) + points[ownMove]!![oppMove]!!
+        }
     }
 
-    // test if implementation meets criteria from the description, like:
     val testInput = readInput("day2/test")
-    check(part1(testInput) == 150)
-    check(part2(testInput) == 900)
+    check(part1(testInput) == 15)
+    check(part2(testInput) == 12)
 
     val input = readInput("day2/input")
     println(part1(input))
     println(part2(input))
-}
-
-fun mapInput(input: List<String>): List<Pair<Int, Int>> {
-    return input.map { it.split(" ") }
-        .map {
-            val value = if (it[0] == "up") -it[1].toInt() else it[1].toInt()
-            when (it[0]) {
-                "forward" -> Pair(value, 0)
-                else -> Pair(0, value)
-            }
-        }
 }
