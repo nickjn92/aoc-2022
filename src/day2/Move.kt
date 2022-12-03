@@ -8,56 +8,55 @@ enum class Move {
     ROCK,
     PAPER,
     SCISSORS;
-
-    companion object {
-        val strategies = mapOf(
-            "X" to LOSE,
-            "Y" to DRAW,
-            "Z" to WIN
-        )
-
-        val moves = mapOf(
-            "A" to ROCK,
-            "X" to ROCK,
-            "B" to PAPER,
-            "Y" to PAPER,
-            "C" to SCISSORS,
-            "Z" to SCISSORS
-        )
-
-        val winningMoves = mapOf(
-            ROCK to PAPER,
-            PAPER to SCISSORS,
-            SCISSORS to ROCK
-        )
-
-        val losingMoves = mapOf(
-            ROCK to SCISSORS,
-            PAPER to ROCK,
-            SCISSORS to PAPER
-        )
-
-        val points = mapOf(
-            ROCK to mapOf(
-                ROCK to 3,
-                PAPER to 0,
-                SCISSORS to 6
-            ),
-            PAPER to mapOf(
-                ROCK to 6,
-                PAPER to 3,
-                SCISSORS to 0
-            ),
-            SCISSORS to mapOf(
-                ROCK to 0,
-                PAPER to 6,
-                SCISSORS to 3
-            )
-        )
-    }
 }
+
 enum class Strategy {
     LOSE,
     DRAW,
     WIN
 }
+
+val strategies = mapOf(
+    "X" to LOSE,
+    "Y" to DRAW,
+    "Z" to WIN
+)
+
+val moves = mapOf(
+    "A" to Move.ROCK,
+    "X" to Move.ROCK,
+    "B" to Move.PAPER,
+    "Y" to Move.PAPER,
+    "C" to Move.SCISSORS,
+    "Z" to Move.SCISSORS
+)
+
+val winningMoves = mapOf(
+    Move.ROCK to Move.PAPER,
+    Move.PAPER to Move.SCISSORS,
+    Move.SCISSORS to Move.ROCK
+)
+
+val losingMoves = mapOf(
+    Move.ROCK to Move.SCISSORS,
+    Move.PAPER to Move.ROCK,
+    Move.SCISSORS to Move.PAPER
+)
+
+val points = mapOf(
+    Move.ROCK to mapOf(
+        Move.ROCK to 3,
+        Move.PAPER to 0,
+        Move.SCISSORS to 6
+    ),
+    Move.PAPER to mapOf(
+        Move.ROCK to 6,
+        Move.PAPER to 3,
+        Move.SCISSORS to 0
+    ),
+    Move.SCISSORS to mapOf(
+        Move.ROCK to 0,
+        Move.PAPER to 6,
+        Move.SCISSORS to 3
+    )
+)
