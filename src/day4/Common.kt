@@ -1,4 +1,4 @@
-package day3
+package day4
 
 fun Char.toPriority() = when (this.isUpperCase()) {
     true -> this - 'A' + 27
