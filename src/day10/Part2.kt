@@ -5,7 +5,7 @@ import kotlin.math.abs
 
 class Part2 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val pixels = 40 * 6
 
         val spritePositionAtCycles = input.toRegistryValuesAtCycles()

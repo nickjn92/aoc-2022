@@ -4,7 +4,7 @@ import PartSolver
 
 class Part1 : PartSolver<Long> {
 
-    override fun solve(input: List<String>): Long {
+    override fun solve(input: List<String>, isTest: Boolean): Long {
         println("Part 1:")
         val cave = input.toCave()
         cave.simulateUntilEternalFlow()

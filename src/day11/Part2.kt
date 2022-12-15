@@ -5,7 +5,7 @@ import math.lcm
 
 class Part2 : PartSolver<Long> {
 
-    override fun solve(input: List<String>): Long {
+    override fun solve(input: List<String>, isTest: Boolean): Long {
         val inspections = mutableMapOf<Int, Long>()
         val monkeys = input.toMonkeys()
 

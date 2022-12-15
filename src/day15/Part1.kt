@@ -4,10 +4,10 @@ import PartSolver
 
 class Part1 : PartSolver<Long> {
 
-    override fun solve(input: List<String>): Long {
+    override fun solve(input: List<String>, isTest: Boolean): Long {
         val grid = input.toSensorGrid()
-        println("Actual solution part 1: ${grid.impossibleCoordinates(2000000)}")
-        return grid.impossibleCoordinates(10)
+        val y = if (isTest) 10 else 2000000
+        return grid.impossibleCoordinates(y)
     }
 
     private fun SensorGrid.impossibleCoordinates(y: Int) = noBeaconsAtY(y) - beaconsAtY(y)

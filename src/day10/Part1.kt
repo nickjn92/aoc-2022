@@ -4,7 +4,7 @@ import PartSolver
 
 class Part1 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val registryValues = input.toRegistryValuesAtCycles()
 
         val signalStrengths = (0..input.size * 2).mapNotNull {

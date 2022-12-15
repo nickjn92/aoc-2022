@@ -6,7 +6,7 @@ import day13.Packet.ListPacket
 
 class Part2 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val dividerA = ListPacket(listOf(IntPacket(2)))
         val dividerB = ListPacket(listOf(IntPacket(6)))
 

@@ -6,7 +6,7 @@ import day8.Visibility.VISIBLE
 
 class Part1 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val grid = input.toGrid()
 
         return grid.flatMapIndexed { x, cols ->

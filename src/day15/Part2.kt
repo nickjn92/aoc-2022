@@ -5,11 +5,10 @@ import common.Coordinate
 
 class Part2 : PartSolver<Long> {
 
-    override fun solve(input: List<String>): Long {
+    override fun solve(input: List<String>, isTest: Boolean): Long {
         val grid = input.toSensorGrid()
-        val b = grid.getPossibleBeaconCoordinates(4000000)
-        println("Actual solution: ${b.first().tuningFrequency()}")
-        return grid.getPossibleBeaconCoordinates(20).first().tuningFrequency()
+        val max = if (isTest) 20 else 4000000
+        return grid.getPossibleBeaconCoordinates(max).first().tuningFrequency()
     }
 
     private fun Coordinate.tuningFrequency() = (x * 4000000L) + y

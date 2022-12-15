@@ -4,7 +4,7 @@ import PartSolver
 
 class Part2 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val directories = parseDirectories(input)
 
         val totalSize = 70000000

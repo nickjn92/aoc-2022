@@ -4,7 +4,7 @@ import PartSolver
 
 class Part2 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val heightMap = input.toHeightMap()
         val end = input.getEndPosition()
 
@@ -20,7 +20,7 @@ class Part2 : PartSolver<Int> {
         }
             .filterNotNull()
             .map { start ->
-                val (path, cost) = aStarSearch(start, end, grid)
+                val (_, cost) = aStarSearch(start, end, grid)
                 start to cost
             }
 

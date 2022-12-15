@@ -4,7 +4,7 @@ import PartSolver
 
 class Part2 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         val knots = (1..10).map { Knot() }
 
         input.forEach {

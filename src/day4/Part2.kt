@@ -3,7 +3,7 @@ package day4
 import PartSolver
 
 class Part2 : PartSolver<Int> {
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         return input.sumOf {
             val (firstRange, secondRange) = it.split(',')
                 .map { rangeStr -> rangeStr.split('-') }

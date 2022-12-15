@@ -3,7 +3,7 @@ package day5
 import PartSolver
 
 class Part2 : PartSolver<String> {
-    override fun solve(input: List<String>): String {
+    override fun solve(input: List<String>, isTest: Boolean): String {
         val state = input.getInitialCrateState()
 
         val moves = input.subList(input.indexOf("") + 1, input.size)

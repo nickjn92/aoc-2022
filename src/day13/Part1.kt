@@ -4,7 +4,7 @@ import PartSolver
 
 class Part1 : PartSolver<Int> {
 
-    override fun solve(input: List<String>): Int {
+    override fun solve(input: List<String>, isTest: Boolean): Int {
         return input.toPackets()
             .chunked(2)
             .mapIndexed { idx, packets ->
