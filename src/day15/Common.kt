@@ -30,8 +30,16 @@ data class SensorGrid(
         }
     }
 
-    fun getPossibleBeaconCoordinates(max: Int): List<Coordinate> {
-        return emptyList<Coordinate>()
+    fun tuningFrequency(max: Int): Long {
+        (0..max).map { y ->
+            var x = 0
+            while (x < max) {
+                x = sensors.firstOrNull { it.coversPoint(x, y) }
+                    ?.findIntervalEnd(y)
+                    ?: return x * 4000000L + y
+            }
+        }
+        return -1
     }
 }
 
@@ -40,6 +48,22 @@ data class Sensor(
     val closestBeacon: Coordinate
 ) {
     val manhattanDistance = coordinate.manhattanDistance(closestBeacon)
+    private val minX = coordinate.x - manhattanDistance
+    private val maxX = coordinate.x + manhattanDistance
+    private val minY = coordinate.y - manhattanDistance
+    private val maxY = coordinate.y + manhattanDistance
+
+    fun coversPoint(x: Int, y: Int): Boolean {
+        if (x in minX..maxX && y in minY..maxY) {
+            val rowDiff = abs(this.coordinate.y - y)
+            return x in (minX + rowDiff)..(maxX - rowDiff)
+        }
+        return false
+    }
+    fun findIntervalEnd(y: Int): Int {
+        val rowDiff = abs(this.coordinate.y - y)
+        return maxX - rowDiff + 1
+    }
 }
 
 private fun String.toCoordinatePart() = this.substring(2).toInt()
